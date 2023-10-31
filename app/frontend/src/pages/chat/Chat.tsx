@@ -73,8 +73,6 @@ const Chat = () => {
                 } else if (event["choices"] && event["choices"][0]["context"]) {
                     // Update context with new keys from latest event
                     askResponse.choices[0].context = { ...askResponse.choices[0].context, ...event["choices"][0]["context"] };
-                } else if (event["error"]) {
-                    throw Error(event["error"]);
                 }
             }
         } finally {
@@ -303,7 +301,7 @@ const Chat = () => {
                     <div className={styles.chatInput}>
                         <QuestionInput
                             clearOnSend
-                            placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                            placeholder="Type a new question (e.g. do you have examples of conversations for the buddies?)"
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                         />

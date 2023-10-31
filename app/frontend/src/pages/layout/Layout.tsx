@@ -1,6 +1,7 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
 
-import github from "../../assets/github.svg";
+import logoencamina from "../../assets/logo-encamina.svg";
+import github from "../../assets/logo-gada.svg";
 
 import styles from "./Layout.module.css";
 
@@ -14,7 +15,10 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>GPT + Enterprise data | Sample</h3>
+                        <a href="#" target={"_blank"} title="GADA-i example"></a>
+                        <a href="#" target={"_blank"} title="ENCAMINA example">
+                            <img src={logoencamina} alt="GAdA-i logo" width="100%" height="auto" className={styles.LogoEncaminaHeader} />
+                        </a>
                     </Link>
                     <nav>
                         <ul className={styles.headerNavList}>
@@ -29,25 +33,24 @@ const Layout = () => {
                                 </NavLink>
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <a href="https://aka.ms/entgptsearch" target={"_blank"} title="Github repository link">
-                                    <img
-                                        src={github}
-                                        alt="Github logo"
-                                        aria-label="Link to github repository"
-                                        width="20px"
-                                        height="20px"
-                                        className={styles.githubLogo}
-                                    />
-                                </a>
+                                <NavLink to="/docs" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
+                                    Documents
+                                </NavLink>
                             </li>
                         </ul>
                     </nav>
-                    <h4 className={styles.headerRightText}>Azure OpenAI + Cognitive Search</h4>
+                    <h4 className={styles.headerRightText}>GADA-i | Powered by Microsoft Azure and OpenAI</h4>
                     {useLogin && <LoginButton />}
                 </div>
             </header>
 
             <Outlet />
+            <footer className={styles.footer}>
+                <div className={styles.footerContainer}>
+                    <img src={github} alt="GADA-i logo" width="100%" height="auto" className={styles.LogoEncaminaHeader} />
+                    <h4 className={styles.headerTitle}>Archivado y Gestión de Documentos Digitales en la nube de Azure con Inteligencia Artificial</h4>
+                </div>
+            </footer>
         </div>
     );
 };

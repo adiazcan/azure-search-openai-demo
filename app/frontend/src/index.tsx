@@ -10,6 +10,7 @@ import "./index.css";
 
 import Layout from "./pages/layout/Layout";
 import Chat from "./pages/chat/Chat";
+import Docs from "./pages/docs/Docs";
 
 var layout;
 if (useLogin) {
@@ -52,6 +53,10 @@ const router = createHashRouter([
             {
                 path: "qa",
                 lazy: () => import("./pages/oneshot/OneShot")
+            },
+            {
+                path: "docs",
+                element: <Docs />
             },
             {
                 path: "*",
